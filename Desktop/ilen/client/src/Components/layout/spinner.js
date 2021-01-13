@@ -1,6 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React, {Fragment} from 'react'
-import spinner from '../../assets/loading-waiting.gif'
+import spinner from '../../assets/loading.gif'
 
 
 export default ()=>(

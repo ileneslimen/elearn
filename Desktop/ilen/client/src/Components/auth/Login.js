@@ -1,7 +1,7 @@
 import React, {Fragment, useState} from 'react';
 import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
+
 import {login} from '../../actions/auth'
 import {
     Button,
@@ -30,7 +30,7 @@ if (isAuthenticated){
   return <Redirect to="/dashboard" />
 }
    return  ( <Fragment>
-       <h1>Sign In</h1>
+      
         <Form onSubmit={e=>onSubmit(e)}>
     <FormGroup>
   
@@ -68,11 +68,7 @@ if (isAuthenticated){
   <p className='sign'>Don't have an account? <Link to='/register'>Sign Up</Link></p>
   </Fragment>
    )}
-   Login.propTypes={
-     login:PropTypes.func.isRequired,
-     isAuthenticated:PropTypes.bool
 
-   }
    const mapStateToProps=state=>({
      isAuthenticated:state.auth.isAuthenticated
    })

@@ -1,45 +1,49 @@
-import React,{ Fragment } from 'react';
-import { Nav, Navbar } from 'react-bootstrap';
+import React from 'react'
 import {Link} from 'react-router-dom'
+import {Fragment} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {logout} from '../../actions/auth'
 
+const NavBar =({auth:{isAuthenticated, loading}, logout})=>{
+  const authLinks=(  
+    <div class="et-hero-tabs-container">
+        <i className="fas fa-user "/>{' '}
+    <Link class="et-hero-tab" to="/dashboard" >Dashboard</Link>
+    <span class="et-hero-tab-slider"></span>
+    <i className="fas fa-sign-out-alt"></i>{' '}
+    <a onClick={logout} href='#!' >Log Out </a> 
+    </div>)
+     const guestLinks=(
+      <div class="et-hero-tabs-container">
+         
+           <Link class="et-hero-tab"  to="/register" >Sign Up</Link>
+          <Link class="et-hero-tab" to="/login" >Sign In</Link> 
+           <span class="et-hero-tab-slider"></span>
+            
+        </div>
+      )
+  return (
 
-const NavBar=({auth:{isAuthenticated, loading}, logout}) =>{
-  const authLinks=(
-    <ul>
-      <li> <Link  to="/dashboard" >
-      <i className="fas fa-user "/>{' '}
-      <span className='hide-sm'> Dashboard </span></Link></li>
-      <li><a onClick={logout} href='#!'>
-      <i className="fas fa-sign-out-alt"></i>{' '}
-        <span className='hide-sm'>Log Out</span>
-        </a></li>
-    </ul>
+      <div>
+  
+    <section class="et-hero-tabs">
+    <h1>STICKY SLIDER NAV</h1>
+    <h3>Sliding content with sticky tab nav</h3>
+  <div class="et-hero-tabs-container">
+   <Link class="et-hero-tab" to="/" >We-Lean </Link> 
+    <span class="et-hero-tab-slider"></span>
+    {!loading && (<Fragment className='bar' >{isAuthenticated ? authLinks: guestLinks}</Fragment>)}
 
-  );
-  const guestLinks=(
-    <Navbar bg='light' expand='lg'>
-     <Nav className='mr-auto'>
-       <Link  to="/register" >Sign Up</Link>
-        <Link  to="/login" >Sign In</Link>
-        </Nav>
-    </Navbar>
+   
+  </div>
+
+</section>
+
+
+</div>
   )
 
-  
-  return (
-    <Navbar bg='light' expand='lg'>
-    
-      <Nav className='mr-auto'>
-        <h1>
-        <Link to ='/'>E-learn</Link>
-        </h1>
-        {!loading && (<Fragment>{isAuthenticated ? authLinks: guestLinks}</Fragment>)}
-      </Nav>
-    </Navbar>
-  );
 }
 NavBar.propTypes={
   logout:PropTypes.func.isRequired,

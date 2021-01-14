@@ -1,17 +1,17 @@
 import {React,useEffect} from 'react'
 import {getProfiles} from '../../actions/profile'
-import { connect,useSelector} from 'react-redux'
+import { connect,useSelector,useDispatch} from 'react-redux'
 import { Fragment } from 'react';
 import ProfileItem from './ProfileItem'
 import Spinner from '../layout/spinner'
 import PropTypes from 'prop-types';
 
 export const Profiles = () => {
-
+const dispatch = useDispatch()
 const profiles = useSelector(state => state.profile.profiles)
 const loading = useSelector(state => state.profile.loading)
     useEffect(() => {
-       getProfiles()      
+     dispatch( getProfiles()   )    
              
     }, []) 
 

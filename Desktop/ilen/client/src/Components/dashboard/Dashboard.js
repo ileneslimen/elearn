@@ -27,12 +27,12 @@ const Dashboard=({getCurrentProfile, deleteAccount,auth: {user}, profile:{profil
          </Fragment></>:
       <Fragment> <p className='small'>You have not yet set a profile, please add some info</p> 
       <Link to='/create-profile' className='btn btn-primary'> Create profile </Link></Fragment> }
-      <Link activeClassName="active" to="/upload" >
+      {/* <Link activeClassName="active" to="/upload" >
           Home
         </Link>
         <Link activeClassName="active" to="/list">
           Files List
-        </Link>
+        </Link> */}
  
   </Fragment>
   

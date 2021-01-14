@@ -16,7 +16,8 @@ const profile = useSelector(state => state.profile.profile)
         <i className="fas fa-user "/>{' '}
     <Link class="et-hero-tab" to="/dashboard" >Dashboard</Link>
     <Link class="et-hero-tab" to="/profile" >Profiles</Link>
-    <Link class="et-hero-tab" to="/upload" >Upload Courses</Link>  
+    <Link class="et-hero-tab" to="/upload" >Upload Courses</Link> 
+    <Link class="et-hero-tab" to="/list" >Courses</Link>  
     <span class="et-hero-tab-slider"></span>
     <i className="fas fa-sign-out-alt"></i>{' '}
     <a onClick={logout} href='#!' >Log Out </a> 

@@ -4,7 +4,6 @@ import { GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE,GET_PROFILES } from "../actio
 const initialState={
     profile:null,
     profiles:[],
-
     loading:true,
     error:{}
 }

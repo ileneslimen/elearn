@@ -14,7 +14,7 @@ import setAuthToken from './utiles/setAuthToken'
 import Dashboard from './Components/dashboard/Dashboard'
 import CreateProfile from './Components/profile-form/CreateProfile'
 import EditProfile from './Components/profile-form/EditProfile'
-import {Profiles} from './Components/profiles/Profiles'
+import Profiles from './Components/profiles/Profiles'
 import PrivateRoute from './Components/Routing/PrivateRoute'
 import FileUpload from './Components/Uploadfiles/FileUpload'
 import FilesList from "./Components/Uploadfiles/FileList";
@@ -39,7 +39,7 @@ return (
          <Route exact path='/register' component={Register} />
          <Route exact path='/login' component={Login} />
          <PrivateRoute exact path='/dashboard' component={Dashboard} />
-         <Route exact path='/profiles' component={Profiles}/>
+         <Route exact path='/profile' component={Profiles}/>
          <PrivateRoute exact path='/create-profile' component={CreateProfile} />
          <PrivateRoute exact path='/edit-profile' component={EditProfile} />
          <Route component={FileUpload} path="/upload"  />

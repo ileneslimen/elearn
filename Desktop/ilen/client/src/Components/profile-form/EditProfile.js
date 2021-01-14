@@ -53,7 +53,7 @@ export const EditProfile = ({history}) => {
          youtube:loading|| !profile.youtube?'':profile.youtube, 
        })
 
-    }, [loading])
+    }, [])
      return (
         <Fragment>
             <h1 class="large text-primary">

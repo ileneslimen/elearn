@@ -32,12 +32,9 @@
     "redux-thunk": "^2.3.0",
     "uuid": "^8.3.2",
     "web-vitals": "^0.2.4",
-  
     "react-bootstrap-switch": "15.5.3",
     "react-datetime": "2.16.3",
-   
     "react-router": "5.2.0"
-    
   },
   "scripts": {
     "start": "react-scripts start",

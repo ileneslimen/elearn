@@ -32,7 +32,6 @@
     "multer-gridfs-storage": "^4.2.0",
     "pdfjs-dist": "^2.5.207",
     "request": "^2.88.2"
-    
   },
   "devDependencies": {
     "concurrently": "^5.3.0",

@@ -1,41 +1,36 @@
-
-import React, { Fragment, useEffect } from 'react';
+import {React,useEffect} from 'react'
+import {getProfiles} from '../../actions/profile'
+import { connect,useSelector} from 'react-redux'
+import { Fragment } from 'react';
+import ProfileItem from './ProfileItem'
+import Spinner from '../layout/spinner'
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
-import ProfileItem from './ProfileItem';
-import { getProfiles } from '../../actions/profile';
+export const Profiles = () => {
 
-const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
-  useEffect(() => {
-    getProfiles();
-  }, [getProfiles]);
+const profiles = useSelector(state => state.profile.profiles)
+const loading = useSelector(state => state.profile.loading)
+    useEffect(() => {
+       getProfiles()      
+             
+    }, []) 
 
-  return (
-    <Fragment>
-      {loading ? (
-        <h1>wait</h1>
-      ) : (
-        <Fragment>
-          <h1 className='large text-primary'>Developers</h1>
-          <p className='lead'>
-            <i className='fab fa-connectdevelop' /> Browse and connect with
-            developers
-          </p>
-          <div className='profiles'>
-            {profiles.length > 0 ? (
-              profiles.map(profile => (
-                <ProfileItem key={profile._id} profile={profile} />
-              ))
-            ) : (
-              <h4>No profiles found...</h4>
-            )}
-          </div>
-        </Fragment>
-      )}
-    </Fragment>
-  );
+    return<div className='container'> 
+      <Fragment>
+{
+    loading? <Spinner />:<Fragment>
+<h1 className='large text-primary'>Professors && Students</h1>
+    
+        <div className="profiles">
+          { profiles.length>0? (
+              profiles.map((profile)=>(<ProfileItem key={profile._id} profile={profile}/>))
+          ):<h4> no profiles found </h4>}
+        </div>
+</Fragment>}</Fragment>
+       
+</div>  
 };
+ 
 
 Profiles.propTypes = {
   getProfiles: PropTypes.func.isRequired,
@@ -44,6 +39,7 @@ Profiles.propTypes = {
 
 const mapStateToProps = state => ({
   profile: state.profile
+ 
 });
 
 export default connect(

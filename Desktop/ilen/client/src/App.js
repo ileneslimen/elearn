@@ -15,10 +15,13 @@ import Dashboard from './Components/dashboard/Dashboard'
 import CreateProfile from './Components/profile-form/CreateProfile'
 import EditProfile from './Components/profile-form/EditProfile'
 import Profiles from './Components/profiles/Profiles'
+import {Profile} from './Components/profile/Profile'
 import PrivateRoute from './Components/Routing/PrivateRoute'
 import FileUpload from './Components/Uploadfiles/FileUpload'
 import FilesList from "./Components/Uploadfiles/FileList";
 import Register from './Components/auth/Register'
+import Posts from './Components/posts/Posts'
+import Post from './Components/post/Post'
 
 if(localStorage.token){
   setAuthToken(localStorage.token)
@@ -39,9 +42,12 @@ return (
          <Route exact path='/register' component={Register} />
          <Route exact path='/login' component={Login} />
          <PrivateRoute exact path='/dashboard' component={Dashboard} />
-         <Route exact path='/profile' component={Profiles}/>
+         <PrivateRoute exact path='/posts' component={Posts} />
+         <Route exact path='/profiles' component={Profiles}/>
+         <Route exact path='/profile/:id' component={Profile}/>
          <PrivateRoute exact path='/create-profile' component={CreateProfile} />
          <PrivateRoute exact path='/edit-profile' component={EditProfile} />
+         <PrivateRoute exact path='/post/:id' component={Post} />
          <Route component={FileUpload} path="/upload"  />
          <Route component={FilesList} path="/list"  />
          

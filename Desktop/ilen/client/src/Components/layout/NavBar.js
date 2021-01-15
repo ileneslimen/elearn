@@ -6,7 +6,6 @@ import PropTypes from 'prop-types'
 import {logout} from '../../actions/auth'
 
 const NavBar =({auth:{isAuthenticated, loading}, logout})=>{
-  // const status = useSelector(state => state.profile.profile.status)
 const profile = useSelector(state => state.profile.profile)
   const stat=profile && profile.status
 
@@ -18,6 +17,7 @@ const profile = useSelector(state => state.profile.profile)
     <Link class="et-hero-tab" to="/profile" >Profiles</Link>
     <Link class="et-hero-tab" to="/upload" >Upload Courses</Link> 
     <Link class="et-hero-tab" to="/list" >Courses</Link>  
+    <Link class="et-hero-tab" to="/posts" >Community</Link>  
     <span class="et-hero-tab-slider"></span>
     <i className="fas fa-sign-out-alt"></i>{' '}
     <a onClick={logout} href='#!' >Log Out </a> 
@@ -30,8 +30,9 @@ const profile = useSelector(state => state.profile.profile)
     <div class="et-hero-tabs-container">
     <i className="fas fa-user "/>{' '}
 <Link class="et-hero-tab" to="/dashboard" >Dashboard</Link>
-<Link class="et-hero-tab" to="/profile" >Profiles</Link>  
+<Link class="et-hero-tab" to="/profiles" >Profiles</Link>  
 <Link class="et-hero-tab" to="/list" >Courses</Link> 
+<Link class="et-hero-tab" to="/posts" >Community</Link>  
 <span class="et-hero-tab-slider"></span>
 <i className="fas fa-sign-out-alt"></i>{' '}
 <a onClick={logout} href='#!' >Log Out </a> 

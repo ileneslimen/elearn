@@ -26,43 +26,58 @@ const Register= ({setAlert, register, isAuthenticated}) => {
         return <Redirect to="/dashboard" />
     } 
     return (
-    <form class="form-contents" onSubmit={e=>onSubmit(e)}>
-    <div class="fc">
+        <div class="login-box">
+            <h2>Sign Up</h2>
+    <form  onSubmit={e=>onSubmit(e)}>
+    <div class="user-box">
+   
         <input type="text"  required    onChange={e =>onChange(e)}
              
             label="name" value={name} name='name' />
         <label>Name</label>
-    </div>
-    <div class="fc">
+   </div>
+        <div class="user-box">
         <input type="text" required   
                 value={email}
                name='email'
                 onChange={e =>onChange(e)} />
         <label>Email</label>
     </div>
-    <div class="fc">
+    <div class="user-box">
         <input type="text" required    
                 value={password}
                name='password'
                 onChange={e =>onChange(e)} />
         <label>Password</label>
     </div>
-    <div class="fc">
+    <div class="user-box">
         <input type="text" required    
                 value={password2}
                name='password2'
                 onChange={e =>onChange(e)} />
         <label>Confirm your password</label>
     </div>
-    <div class="fc">
-        <button>SUBMIT</button>
-        <Link to= '/login' variant="body2">
-                Already have an account? Sign in
+    <button variant="body2" >Submit
+    <span></span>
+      <span></span>
+      <span></span>
+      <span></span></button>
+   
+  
+      
+       
+        <Link to= '/login' variant="body2" className='a'>
+                Already have an account? 
+            
               </Link>
-    </div>
+
+              
+            </form>  </div>
     
     
-</form>
+    
+
+
 )}
 const mapStateToProps=state=>({
     isAuthenticated:state.auth.isAuthenticated

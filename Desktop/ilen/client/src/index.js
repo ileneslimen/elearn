@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import './styles.scss';
+import './App.css'
+
 
 import App from './App';
 

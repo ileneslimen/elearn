@@ -1,16 +1,9 @@
-import React, {Fragment, useState} from 'react';
+import React, { useState} from 'react';
 import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import {login} from '../../actions/auth'
-import {
-    Button,
-    Form,
-    FormGroup,
-    Label,
-    Input,
-   
-  } from "reactstrap";
+
 const Login=({login, isAuthenticated})=>{
    const [FormData, SetFormData]=useState({
      
@@ -29,45 +22,44 @@ const Login=({login, isAuthenticated})=>{
 if (isAuthenticated){
   return <Redirect to="/dashboard" />
 }
-   return  ( <Fragment>
+   return  ( 
       
-        <Form onSubmit={e=>onSubmit(e)}>
-    <FormGroup>
-  
-     
-      <Label for="email">Email address </Label>
-      <Input
-        className="mb-3"
-        type="email"
-        name="email"
-        id="email"
-        placeholder="Email "
-        value={email}
-        required
-        onChange={e =>onChange(e)}
+  <div class="login-box">
+  <h2>Login</h2>
+  <form onSubmit={e=>onSubmit(e)}>
+    <div class="user-box">
+    <input   name="email"
        
-      />
-      <Label for="password">Password </Label>
-      <Input
-        className="mb-3"
-        type="password"
+       value={email}
+       required
+       onChange={e =>onChange(e)} type="email"   />
+      <label>Email</label>
+    </div>
+    <div class="user-box">
+    <input type="password"   
         name="password"
         id="password"
-        placeholder="Password"
+       
         value={password}
         required
-        onChange={e =>onChange(e)}
+        onChange={e =>onChange(e)}  />
+      <label>Password</label>
+      <button type='submit'>Submit
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      </button>
+    </div>
+    <Link to= '/register' className="a">
+                Dont have an account
        
-      />
-   
-      <Button color="primary" style={{ marginTop: "2rem" }}>
-       Log In{" "}
-      </Button>
-    </FormGroup>
-  </Form>
-  <p className='sign'>Don't have an account? <Link to='/register'>Sign Up</Link></p>
-  </Fragment>
+              </Link>
+
+  </form>
+</div>
    )}
+  
 
    const mapStateToProps=state=>({
      isAuthenticated:state.auth.isAuthenticated

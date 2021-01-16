@@ -32,9 +32,10 @@ const App= ()=> {
   },[])
 return (
   <Provider className="App" store={store}>
+    
 <Router>
     <Fragment >
-     <Navbar/>
+    <Navbar/>
      <Route exact path='/' component={Landing}/>
      <section className='Container'>
        <Alert/>
@@ -50,6 +51,7 @@ return (
          <PrivateRoute exact path='/post/:id' component={Post} />
          <Route component={FileUpload} path="/upload"  />
          <Route component={FilesList} path="/list"  />
+         
          
        </Switch> 
      </section>

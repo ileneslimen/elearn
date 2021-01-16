@@ -5,18 +5,21 @@ import {addPost} from '../../actions/post'
 export const PostForm = () => {
 const dispatch = useDispatch()
 const  [text,setText] = useState('')
+const  [formData,setFormData] = useState({})
 const handleChange=(e)=>{
     setText(e.target.value)
   }
-  
+
+
 const handleSubmit=(e)=>{
     e.preventDefault();
-    dispatch(addPost(text));
+    dispatch(addPost({...formData,text}));
+
     setText('')
 
 }
     return (
-        <div class="post-form">
+        <div class="post-form" >
         <div class="bg-primary p">
           <h3>Say Something...</h3>
         </div>
@@ -29,7 +32,7 @@ const handleSubmit=(e)=>{
             placeholder="Create a post"
             required
           ></textarea>
-          <input onClick={handleSubmit} type="submit" class="btn btn-dark my-1" value="Submit" />
+          <input  onClick={handleSubmit} type="submit" class="btn btn-dark my-1" value="Publish" />
         </form>
       </div>
     )

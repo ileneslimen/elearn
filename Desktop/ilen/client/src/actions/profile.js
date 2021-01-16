@@ -51,7 +51,7 @@ export const  CreateProfil =(formData, history, edit=false) => async dispatch =>
         })
     }
 }
-//delete profile && profil
+//delete profile && account
 export const deleteAccount=()=> async dispatch=>{
     if (window.confirm('Are you sure ? This is can NOT be undone!')){
     try {

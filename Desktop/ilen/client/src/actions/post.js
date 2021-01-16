@@ -41,7 +41,7 @@ export const addLike=(id)=>async dispatch=>{
             payload:{msg:'fail', status:err.response.status}})}}
             
        //remove likes
-       export const removeLike=(id)=>async dispatch=>{
+       export const deleteLike=(id)=>async dispatch=>{
         try {
             const res= await axios.put(`/api/posts/unlike/${id}`);
             dispatch({
@@ -68,8 +68,9 @@ export const addLike=(id)=>async dispatch=>{
         // add post
         export const addPost=(formData)=>async dispatch=>{
             const config={
-                headers:{ "Content-Type": "application/json",}
+                headers:{ "Content-Type": "application/json"}
             }
+         
             try {
                 const res= await axios.post('/api/posts',formData,config);
                 dispatch({
@@ -85,7 +86,7 @@ export const addLike=(id)=>async dispatch=>{
         //get post
 export const getPost=(id)=>async dispatch=>{
     try {
-        const res= await axios.get(`/api/posts${id}`);
+        const res= await axios.get(`/api/posts/${id}`);
         dispatch({
             type:GET_POST , 
             payload:res.data

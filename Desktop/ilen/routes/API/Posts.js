@@ -1,6 +1,6 @@
 const express=require('express');
 const router=express.Router();
-const {check,validationResult} =require('express-validator/check')
+const {check,validationResult} =require('express-validator')
 const auth=require('../../middleware/auth')
 const Post=require('../../models/Post')
 const Profile=require('../../models/Profile')
@@ -23,7 +23,7 @@ router.post('/',[auth,[check('text','Text is Required').not().isEmpty()]],async(
     
         })
         const post=await newPost.save()  
-        res.json(post) 
+        res.send(post) 
     } catch (error) {
         console.log(error)
         res.status(500).send('Server Error')
@@ -86,7 +86,7 @@ router.get('/:id',auth,async(req,res)=>{
                 const post=await Post.findById(req.params.id)
            
 
-if(post.likes.filter(like=>like.user.toString()===req.user.id).length>0){
+if(post.likes.filter(like=> like.user.toString()===req.user.id).length>0){
 return res.status(400).json({msg:'Post already liked'})}
 post.likes.unshift({user:req.user.id});
 await post.save()
@@ -104,15 +104,16 @@ res.json(post.likes)
                 const post=await Post.findById(req.params.id)
             
 
-if(post.likes.filter(like=>like.user.toString()===req.user.id).length===0){
-return res.status(400).json({msg:'Post has not been liked yet liked'})}
-const removeindex=post.likes.map(like=>like.user.toString()).indexOf(req.user.id)
-this.post.likes.splice(removeindex,1);
-await post.save()
-res.json(post.likes)
+if(post.likes.filter(like=>like && like.user &&like.user.toString()===req.user.id).length===0){
+return res.status(400).json({msg:'Post has not been liked yet '})}
+
+const removeindex=post.likes.map(like=>like && like.user && like.user.toString()).indexOf(req.user.id)
+post.likes.splice(removeindex,1);
+const posted=await post.save()
+res.status(200).json(posted.likes)
 
 } catch (error) {
-    res.status(500).send('Server Error') 
+    console.error(error.message)
 }        
 })
 
@@ -153,7 +154,7 @@ router.delete('/comment/:id/:comment_id',auth,async(req,res)=>{
         }
 
         const removeindex=post.comments.map(comment=>comment.user.toString()).indexOf(req.user.id)
-        this.post.comments.splice(removeindex,1);
+        post.comments.splice(removeindex,1);
         await post.save()
         res.json(post.comments)
         

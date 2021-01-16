@@ -13,11 +13,9 @@ const loading = useSelector(state => state.post.loading)
     useEffect(() => {
      dispatch(getPosts())    
              
-    }, [getPosts]) 
+    }, []) 
 
-    return   loading? <Spinner/>:(
-    
-    <Fragment>
+    return   (<Fragment>
             <p className='lead'>
             <i className='fas fa-user'></i>welcome to the community </p>
             <PostForm/>

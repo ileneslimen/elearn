@@ -2,49 +2,52 @@ import React from 'react'
 import { Link} from 'react-router-dom';
 import { useSelector,useDispatch} from 'react-redux'
 import Moment from 'react-moment'
-import {addLike,removeLike,deletePost} from '../../actions/post'
+import {addLike,deleteLike,deletePost} from '../../actions/post'
+
+
 import { Fragment } from 'react';
-export const PostItem = ({post}) => {
+export const PostItem = ( { post,showActions}) => {
     const  dispatch = useDispatch()
-    const showActions=true
-    const {_id,name,text,date,avatar,user,likes,comments}=post
-    const auth = useSelector(state => state.auth)
-    ( <div className="post bg-white p-1 my-1">
+     const auth = useSelector(state => state.auth)
+   return ( <div className="post bg-white p-1 my-1">
         <div>
-          <Link to={`/profile/${user}`}>
+          <Link to={`/profile/${ post && post.user}`}>
             <img
               class="round-img"
-              src={avatar}
+              src={post&& post.avatar}
               alt=""
             />
-            <h4>{name}</h4>
+            <h4>{post && post.name}</h4>
           </Link>
         </div>
         <div>
           <p class="my-1">
-          {text}
+          {post&& post.text}
           </p>
            <p class="post-date">
-              Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
+              Posted on <Moment format='YYYY/MM/DD'>{post && post.date}</Moment>
           </p>
-          {showActions && <Fragment><button  onClick={()=>dispatch(addLike(_id))} type="button" class="btn btn-light">
-            <i class="fas fa-thumbs-up"></i>{' '}
-           {likes.length>0&&( <span>{likes.length}</span>)}
+          {showActions && 
+           <Fragment><button  onClick={()=>dispatch(addLike(post && post._id)) }type="button" class="btn btn-light">
+            <i class="fas fa-thumbs-up"></i>{'  '}
+           {post&& post.likes.length>0 && ( <span>{post.likes.length}</span>)}
           </button>
-          <button  onClick={()=>dispatch(removeLike(_id))} type="button" class="btn btn-light">
-            <i class="fas fa-thumbs-down"></i>
-          </button>
-          <Link to={`/post/${_id}`} class="btn btn-primary">
+          <button  onClick={()=>dispatch(deleteLike(post&& post._id))} type="button" class="btn btn-light">
+            <i class="fas fa-thumbs-down"></i></button>
+          <Link to={`/post/${post&& post._id}`} class="btn btn-primary">
             Discussion{' '} 
-            {comments.length>0 &&(<span class='comment-count'>{comments.length}</span>)}
+            {post&& post.comments.length>0 &&(<span class='comment-count'>{post&& post.comments.length}</span>)}
           </Link>
-          {!auth.loading && user===auth.user._id && (
-          <button onClick={()=>dispatch(deletePost(_id))}     
+           {auth&&!auth.loading && post.user===auth.user._id && ( 
+          <button onClick={()=>dispatch(deletePost(post&& post._id))}     
           type="button"
-          class="btn btn-danger"
+          class="btn btn-danger" id='deletebtn'
         >
           <i class="fas fa-times"></i>
-        </button>)}</Fragment>}
+        </button>
+         )} 
+        </Fragment>
+         } 
           
         </div>
       </div>

@@ -5,10 +5,11 @@ import { useDispatch} from 'react-redux'
 export const CommentForm = ({postId}) => {
     const dispatch = useDispatch()
 const  [text,setText] = useState('')
+const  [formData,setFormData] = useState({})
 const handleSubmit=(e)=>{
     e.preventDefault();
-    dispatch(addComment(postId,text));
-    setText('')
+    dispatch(addComment(postId,{...formData,text}));
+
 
 }
     return (

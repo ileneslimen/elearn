@@ -88,7 +88,8 @@ router.get('/:id',auth,async(req,res)=>{
 
 if(post.likes.filter(like=> like.user.toString()===req.user.id).length>0){
 return res.status(400).json({msg:'Post already liked'})}
-post.likes.unshift({user:req.user.id});
+
+ post.likes.unshift({user:req.user.id});
 await post.save()
 res.json(post.likes)
 } catch (error) {
@@ -104,16 +105,19 @@ res.json(post.likes)
                 const post=await Post.findById(req.params.id)
             
 
-if(post.likes.filter(like=>like && like.user &&like.user.toString()===req.user.id).length===0){
+if(post.likes.filter(like=>like.user.toString()===req.user.id).length===0){
 return res.status(400).json({msg:'Post has not been liked yet '})}
 
-const removeindex=post.likes.map(like=>like && like.user && like.user.toString()).indexOf(req.user.id)
-post.likes.splice(removeindex,1);
-const posted=await post.save()
-res.status(200).json(posted.likes)
+
+const removeindex=post.likes.map(like=>  like.user.toString()).indexOf(req.user.id)
+
+ post.likes.splice(removeindex,1);
+await post.save()
+res.status(200).json(post.likes)
 
 } catch (error) {
     console.error(error.message)
+    res.json(error)
 }        
 })
 

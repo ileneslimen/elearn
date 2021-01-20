@@ -30,9 +30,9 @@ export const PostItem = ( { post,showActions}) => {
           </h2>
           
           {showActions && 
-           <Fragment><button  onClick={()=>dispatch(addLike(post && post._id)) }type="button" class="btn">
+
             <i class="fas fa-thumbs-up"></i>{'  '}
-           {post&& post.likes.length>0 && ( <span>{post.likes.length}</span>)}
+           { post.likes.length>0 && ( <span>{post.likes.length}</span>)}
           </button>
           <button  onClick={()=>dispatch(deleteLike(post&& post._id))} type="button" class="btn ">
             <i className="fas fa-thumbs-down"></i>Dislike</button>

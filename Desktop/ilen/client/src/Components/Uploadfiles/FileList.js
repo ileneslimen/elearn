@@ -53,6 +53,8 @@ const FilesList = () => {
           {filesList.length > 0 ? (
             filesList.map(
               ({ _id, title, description, file_path, file_mimetype }) => (
+                <>
+              
                 <tr key={_id}>
    
          
@@ -69,9 +71,7 @@ const FilesList = () => {
                     </a>
                    
                   </td>
-  </tr>
-        
-                
+
               )
             )
           ) : (
@@ -83,6 +83,7 @@ const FilesList = () => {
           )}
       </table>
     </div>
+    
   );
 };
 

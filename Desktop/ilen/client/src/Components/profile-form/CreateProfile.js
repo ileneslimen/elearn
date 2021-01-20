@@ -54,7 +54,7 @@ export const CreateProfile = ({history}) => {
         </select>
         </div>
         <div id='skills'className="form-group">
-        <input type="text"   onChange={handleChange} name='skills' value={skills}placeholder="* Skills"/>
+        <input type="text"   onChange={handleChange} name='skills' value={skills} placeholder="* Skills"/>
        <small  className="form-text">Please use comma separated values (eg. Html,Css,JavaScript)</small>
         </div>
         <div  id='bio'  className="form-group">

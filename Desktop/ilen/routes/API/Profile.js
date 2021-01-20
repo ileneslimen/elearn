@@ -49,7 +49,7 @@ profileFields.user= req.user.id;
 if (location) profileFields.location=location;
 if (bio) profileFields.bio=bio;
 if (status) profileFields.status=status;
-// if (skills) {profileFields.skills=skills.split(',').map(skill=>skill.trim());}
+if (skills) {profileFields.skills=skills.split(',').map(skill=>skill.trim());}
 // build social object
 profileFields.social={}
 if (youtube) profileFields.social.youtube=youtube;

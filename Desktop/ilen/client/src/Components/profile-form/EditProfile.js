@@ -45,7 +45,7 @@ export const EditProfile = ({history}) => {
        location: loading|| !profile.location?'':profile.location,
          status:loading|| !profile.status?'':profile.status,
          bio:loading|| !profile.bio?'':profile.bio,
-         skills:loading|| !profile.skills?'':profile.skills,
+         skills:loading|| !profile.skills?'':profile.skills.join(','),
          facebook:loading|| !profile.facebook?'':profile.facebook,
          twitter:loading|| !profile.twitter?'':profile.twitter,
          instagram:loading|| !profile.instagram?'':profile.instagram,
@@ -53,7 +53,7 @@ export const EditProfile = ({history}) => {
          youtube:loading|| !profile.youtube?'':profile.youtube, 
        })
 
-    }, [])
+    }, [loading])
      return (
         <Fragment>
             <h1 class="large text-primary">
@@ -65,15 +65,15 @@ export const EditProfile = ({history}) => {
         <input type="text"  onChange={handleChange} name='location'value={location} placeholder="Location"/>
        <small  className="form-text">City & state suggested (eg.Tunisia,Tunis)</small>
         </div>
-        <div   id='status' className="form-group">
-        <select  onChange={handleChange} name="status">
+        <div   id='status'  className="form-group">
+        <select   value={status} onChange={handleChange} name="status">
             <option value="0">* Select Professional Status</option>
             <option value="Professor">Professor</option>
             <option value="Student">Student</option>
         </select>
         </div>
         <div id='skills'className="form-group">
-        <input type="text"   onChange={handleChange} name='skills' value={skills} placeholder="* Skills"/>
+        <input type="text"   value={skills} onChange={handleChange} name='skills' placeholder="* Skills"/>
        <small  className="form-text">Please use comma separated values (eg. Html,Css,JavaScript)</small>
         </div>
         <div  id='bio'  className="form-group">

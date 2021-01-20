@@ -20,18 +20,16 @@ const handleSubmit=(e)=>{
 }
     return (
         <div class="post-form" >
-        <div class="bg-primary p">
-          <h3>Say Something...</h3>
-        </div>
+      
         <form class="form my-1">
-          <textarea
+          <input
+          className='postinput'
             name="text"
-            cols="30"
-            rows="5"
             onChange={handleChange}
-            placeholder="Create a post"
+            placeholder="Say Something..."
             required
-          ></textarea>
+            value={text}
+          ></input>
           <input  onClick={handleSubmit} type="submit" class="btn btn-dark my-1" value="Publish" />
         </form>
       </div>

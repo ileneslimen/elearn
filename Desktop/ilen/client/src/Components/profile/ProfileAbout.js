@@ -1,26 +1,43 @@
 import React from 'react'
 import { Fragment } from 'react'
+import {connect} from 'react-redux'
+import {deleteAccount} from '../../actions/profile'
+import { Link } from 'react-router-dom'
 
- const ProfileAbout = ({profile}) => {
+ const ProfileAbout = ({profile,deleteAccount}) => {
     let name=profile && profile.user && profile.user.name
     let bio=profile && profile.bio
   
     return (
-        <div class="profile-about bg-light p-2">
+        <div class="profile-about">
             {bio &&
-          ( <Fragment><h2 class="text-primary">{name.trim().split(' ')[0]}'s Bio</h2>
-          <p>
+          ( <Fragment><h2 class="bio">{name.trim().split(' ')[0]}'s Bio</h2>
+          <p className='biobody'>
       { bio}
           </p> </Fragment>)}
           <div className="line"></div>
-          <h2 className="text-primary">Skill Set</h2>
+          <h2 className="bio">Skill Set</h2>
           <div className="skills">
-       {profile && profile.skills && profile.skills.map((skill,index)=>(
-           <div key={index} className='p-1'>
-               < i className='fas fa-check'></i>{skill} {' '}</div> 
-       ))}
+          <ul>
+          {profile && profile.skills && profile.skills.slice(0,4).map((skill,index) => (
+          <li key={index} className="profile-card-inf__txt">
+           {skill}
+          </li>
+        ))}
+      </ul>
+      {profile!==null ? <> <Fragment>  <Link to='/edit-profile' className='btn btn-primary'> Edit profile </Link></Fragment> 
+     <Fragment>
+         <div className='my-2'>
+          <button className='btn btn-danger' onClick={()=>deleteAccount()}>
+               Delete My Account
+          </button>
+         </div>
+         </Fragment></>:
+      <Fragment> <p className='small'>You have not yet set a profile, please add some info</p> 
+      <Link to='/create-profile' className='btn btn-primary'> Create profile </Link></Fragment> }
           </div>
         </div>
     )
 }
-export default ProfileAbout
+
+export default connect(null, {deleteAccount})(ProfileAbout)

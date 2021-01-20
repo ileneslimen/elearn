@@ -41,22 +41,24 @@ const FilesList = () => {
   return (
     <div className="files-container">
       {errorMsg && <p className="errorMsg">{errorMsg}</p>}
-      <table className="files-table">
-        <thead>
+      <table id="customers">
+        
           <tr>
             <th>Title</th>
             <th>Description</th>
             <th>Download File</th>
           </tr>
-        </thead>
-        <tbody>
+     
+
           {filesList.length > 0 ? (
             filesList.map(
               ({ _id, title, description, file_path, file_mimetype }) => (
                 <>
               
                 <tr key={_id}>
-                  <td className="file-title">{title}</td>
+   
+         
+   <td className="file-title">{title}</td>
                   <td className="file-description">{description}</td>
                   <td>
                     <a
@@ -67,9 +69,9 @@ const FilesList = () => {
                     >
                       Download
                     </a>
+                   
                   </td>
-                </tr>
-                </>
+
               )
             )
           ) : (
@@ -79,7 +81,6 @@ const FilesList = () => {
               </td>
             </tr>
           )}
-        </tbody>
       </table>
     </div>
     

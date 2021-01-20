@@ -5,7 +5,7 @@ import { Fragment } from 'react';
 import ProfileItem from './ProfileItem'
 import Spinner from '../layout/spinner'
 import PropTypes from 'prop-types';
-
+import './prof.scss'
 export const Profiles = () => {
 const dispatch = useDispatch()
 const profiles = useSelector(state => state.profile.profiles)
@@ -19,7 +19,7 @@ const loading = useSelector(state => state.profile.loading)
       <Fragment>
 {
     loading? <Spinner />:<Fragment>
-<h1 className='large text-primary'>Professors && Students</h1>
+
     
         <div className="profiles">
           { profiles.length>0? (

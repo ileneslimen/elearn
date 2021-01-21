@@ -45,6 +45,8 @@ import logo from "../../assets/wl 1.png";
             </header>
         ) : (
             <header>
+
+
                 <img className="logo" src={logo} alt="" />
                 <nav>
                     <ul className="nav-area">
@@ -56,6 +58,7 @@ import logo from "../../assets/wl 1.png";
                             {" "}
                             <a href="/list">Courses</a>
                         </li>
+
 
                         <li>
                             {" "}

@@ -39,6 +39,7 @@ const {name,email,password,password2}=FormData;
             setAlert('passwords do not match','danger')}
        else {
           register({name,email,password})
+         
     }}
     // redirect if logged in 
     if (isAuthenticated){

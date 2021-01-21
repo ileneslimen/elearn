@@ -31,6 +31,7 @@ const avatar=gravatar.url(email,{
     r:'pg',
     d:'mm'
 })
+
 user = new User ({
     name,
     email,

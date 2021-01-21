@@ -16,7 +16,7 @@ useEffect(() => {
     return (
         <Fragment>
         <Fragment>
-        {profile===null|| loading? <Spinner/>:<Fragment> <Link to='/profiles' className ='btn btn-light'>Back To Profiles</Link> </Fragment>}    
+        {profile===null|| loading? <Spinner/>:<Fragment> <Link to='/profiles' className ='btn btn-light'><i class="fas fa-arrow-left"></i> Back To Profiles</Link> </Fragment>}    
         </Fragment>
         <div class="profile-grid my-1">
             <ProfileTop profile={profile}/>

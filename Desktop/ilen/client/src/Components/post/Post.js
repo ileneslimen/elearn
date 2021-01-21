@@ -15,11 +15,12 @@ import { CommentItem } from '../post/CommentItem'
  
    return (  <Fragment>
         <Link to='/posts' className='btn'> Back To Posts</Link> <PostItem post={post} showActions={false}/>
-        <CommentForm postId={post && post._id} />
+       
         <div className='comments'>
         {post && post.comments.map(comment=>
            ( <CommentItem key={comment._id} comment={comment} postId={post._id} />) )}
        </div>
+       <CommentForm postId={post && post._id} />
        </Fragment>
     )}
 export default Post

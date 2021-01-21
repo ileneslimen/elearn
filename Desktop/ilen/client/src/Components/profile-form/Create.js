@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import $ from 'jquery'
 import './App.css'
-import EditProf from './edit'
+
+import  CreateProfile  from './CreateProfile'
 export default class hell extends Component {
   jQuerycode = () => {
    
@@ -53,7 +54,7 @@ export default class hell extends Component {
   }
   render() {
     return (
-     <EditProf/>
+     <CreateProfile/>
         
 
     )

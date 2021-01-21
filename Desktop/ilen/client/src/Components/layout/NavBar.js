@@ -44,7 +44,7 @@ import logo from '../../assets/wl 1.png'
           <li> <a href="/profiles">Profiles</a></li>
           <li> <a href="/posts">Posts</a></li>
           
-               <li><a onClick={logout} href='#!' >Log Out </a></li>
+               <li><a onClick={logout} href='/' >Log Out </a></li>
     </ul>
     </nav>
           
@@ -53,7 +53,7 @@ import logo from '../../assets/wl 1.png'
      
          
     
-        <Link  to="/login" ></Link>  
+        <Link  to="/" ></Link>  
       
   )
   return (

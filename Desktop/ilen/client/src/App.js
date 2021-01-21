@@ -13,7 +13,7 @@ import Alert from './Components/layout/Alert'
 import {loadUser} from './actions/auth'
 import setAuthToken from './utiles/setAuthToken'
 import Dashboard from './Components/dashboard/Dashboard'
-import CreateProfile from './Components/profile-form/CreateProfile'
+import CreateProfile from './Components/profile-form/Create'
 import EditProfile from './Components/profile-form/EditProfile'
 import Profiles from './Components/profiles/Profiles'
 import {Profile} from './Components/profile/Profile'
@@ -38,6 +38,7 @@ return (
     <Fragment >
     <Nav/>
      <Route exact path='/login' component={Landing1}/>
+    
      <section className='Container'>
      
        <Alert/>
@@ -49,7 +50,7 @@ return (
          <PrivateRoute exact path='/profiles' component={Profiles}/>
          <PrivateRoute exact path='/profile/:id' component={Profile}/>
          <PrivateRoute exact path='/create-profile' component={CreateProfile} />
-         <PrivateRoute exact path='/edit-profile' component={EditProfile} />
+         <Route exact path='/edit-profile' component={EditProfile} />
          <PrivateRoute exact path='/post/:id' component={Post} />
          <PrivateRoute component={FileUpload} path="/upload"  />
          <PrivateRoute component={FilesList} path="/list"  />

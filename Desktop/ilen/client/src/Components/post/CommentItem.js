@@ -8,8 +8,8 @@ export const CommentItem = ({postId,comment:{_id,text,name,avatar,user,date}}) =
     const  dispatch = useDispatch()
     const auth = useSelector(state => state.auth)
     return (
-        <div class="comments">
-        <div class="post bg-white p-1 my-1">
+        <div class="comment bg-white p-1 my-1">
+        <div >
          
             <Link to={`/profile/${user}`}>
               <img
@@ -17,7 +17,7 @@ export const CommentItem = ({postId,comment:{_id,text,name,avatar,user,date}}) =
                 src={avatar}
                 alt=""
               />
-              <h4>{name}</h4>
+              <h6>{name}</h6>
             </Link>
           </div>
           <div>
@@ -25,7 +25,7 @@ export const CommentItem = ({postId,comment:{_id,text,name,avatar,user,date}}) =
              {text}
             </p>
              <p class="post-date">
-                Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
+                Commented on <Moment format='YYYY/MM/DD'>{date}</Moment>
             </p>
             {!auth.loading && user===auth.user._id && (
           <button onClick={()=>dispatch(deleteComment(postId,_id))}     

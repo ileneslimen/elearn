@@ -25,11 +25,11 @@ import { Link } from 'react-router-dom'
           </li>
         ))}
       </ul>
-      {profile!==null ? <> <Fragment>  <Link to='/edit-profile' className='btn btn-primary'> Edit profile </Link></Fragment> 
+      {profile!==null ? <> <Fragment>  <Link to='/edit-profile' className='btn btn-primary'> <i class="fas fa-user-edit"></i> </Link></Fragment> 
      <Fragment>
          <div className='my-2'>
           <button className='btn btn-danger' onClick={()=>deleteAccount()}>
-               Delete My Account
+              <i class="fas fa-user-minus"></i>
           </button>
          </div>
          </Fragment></>:

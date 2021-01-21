@@ -110,7 +110,7 @@ const {name,email,password,password2}=FormData;
             <h2>Sign Up</h2>
             <label>
               <span>Name</span>
-              <input type="text"  required    onChange={e =>onChange(e)}
+              <input type="text"  className='in' required    onChange={e =>onChange(e)}
              
             label="name" value={name} name='name' />
             </label>
@@ -118,6 +118,7 @@ const {name,email,password,password2}=FormData;
               <span>Email</span>
               <input type="text" required   
                 value={email}
+                className='in' 
                name='email'
                 onChange={e =>onChange(e)} />
             </label>

@@ -10,22 +10,20 @@ const handleSubmit=(e)=>{
     e.preventDefault();
     dispatch(addComment(postId,{...formData,text}));
 
-
+    setText('')
 }
     return (
-        <div class="post-form">
+        <div class="post">
         <div class="bg-primary p">
-          <h3>Leave a Comment</h3>
         </div>
         <form class="form my-1">
-          <textarea
+          <input className='commentinput'
             name="text"
-            cols="30"
-            rows="5"
+            value={text}
             onChange={(e)=>setText(e.target.value)}
-            placeholder="Create a post"
+            placeholder="Add your comment"
             required
-          ></textarea>
+          ></input>
           <input onClick={handleSubmit} type="submit" class="btn btn-dark my-1" value="Submit" />
         </form>
       </div>

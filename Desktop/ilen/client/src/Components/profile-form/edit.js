@@ -1,11 +1,11 @@
-import React, {useState} from 'react'
+
+import React, {useState,useEffect} from 'react'
 // import PropTypes from 'prop-types'
 import {withRouter,Link}  from 'react-router-dom'
 import { Fragment } from 'react';
-import { useDispatch} from 'react-redux'
-import {CreateProfil} from '../../actions/profile'
-
-export const CreateProfile = ({history}) => {
+import { useDispatch,useSelector} from 'react-redux'
+import {CreateProfil,getCurrentProfile} from '../../actions/profile'
+export const EditProfile = ({history}) => {
     const [formData, setFormData]= useState({
         location:'',
         status:'',
@@ -17,37 +17,55 @@ export const CreateProfile = ({history}) => {
         linkedin:'',
         youtube:'',
     });
-    const {location,
-    status,
-    bio,
-    skills,
-    facebook,
-    twitter,
-    instagram,
-    linkedin,
-    youtube,}=formData
-
+     const {location,
+     status,
+     bio,
+     skills,
+     facebook,
+     twitter,
+     instagram,
+    }=formData
+   
+   
     const handleChange=(e)=>{
         setFormData({...formData,[e.target.name]:e.target.value})
       }
       const dispatch  = useDispatch()
+      const profile = useSelector(state => state.profile.profile)
+
+   
+      const loading = useSelector(state => state.profile.loading)
       const handleSubmit=(e)=>{
         e.preventDefault();
-        dispatch(CreateProfil(formData,history));
+        dispatch(CreateProfil(formData,history,true));
       }
+      useEffect(() => {
+       dispatch(getCurrentProfile());
+       setFormData({
+       location: loading|| !profile.location?'':profile.location,
+         status:loading|| !profile.status?'':profile.status,
+         bio:loading|| !profile.bio?'':profile.bio,
+         skills:loading|| !profile.skills?'':profile.skills.join(','),
+         facebook:loading|| !profile.facebook?'':profile.facebook,
+         twitter:loading|| !profile.twitter?'':profile.twitter,
+         instagram:loading|| !profile.instagram?'':profile.instagram,
+         linkedin:loading|| !profile.linkedin?'':profile.linkedin,
+         youtube:loading|| !profile.youtube?'':profile.youtube, 
+       })
+
+    }, [loading])
      return (
         <Fragment>
-         
-      
-      <form id="msform"    >
+       
+    
+       <form id="msform"    >
        <ul id="progressbar">
-       <li class="active">Required Fields</li>
+    <li class="active">Required Fields</li>
     <li>Social Profiles</li>
     <li>Personal Details</li>
   </ul>
-  
   <fieldset>
-    <h2 class="fs-title">Create your account</h2>
+    <h2 class="fs-title">Edit your account</h2>
     <h3 class="fs-subtitle">This is step 1</h3>
     <select   value={status} onChange={handleChange} name="status">
             <option value="0">* Select Professional Status</option>
@@ -77,10 +95,13 @@ export const CreateProfile = ({history}) => {
 
 </fieldset>
 </form>
-            </Fragment>
+      </Fragment>
+        
+        
+         
      )
  };
 
 
 
-export default withRouter(CreateProfile)
+export default withRouter(EditProfile)

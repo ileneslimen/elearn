@@ -16,8 +16,8 @@ const loading = useSelector(state => state.post.loading)
     }, []) 
 
     return   (<Fragment>
-            <p className='lead'>
-            <i className='fas fa-user'></i>welcome to the community </p>
+            <h1 className='lead'>
+            <i className='fas fa-user'></i>welcome to the community </h1>
             <PostForm/>
             <div className='posts'>
             {posts.map(post=> (<PostItem key={post._id} post={post}/>))}

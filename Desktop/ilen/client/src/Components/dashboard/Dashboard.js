@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {getCurrentProfile,deleteAccount} from '../../actions/profile'
 import Spinner from '../layout/spinner'
+import { Fragment } from 'react'
 
+import { Link } from 'react-router-dom'
 
 
 
@@ -11,14 +13,18 @@ const Dashboard=({getCurrentProfile, auth: {user}, profile:{profile, loading}})=
     useEffect(()=>{
         getCurrentProfile()
     },[]);
-   
+    let _id= profile && profile.user && profile.user._id
     return(
       
   loading && profile ===null ? <Spinner/>: <div className='DashCont'>
   
-     <h1 className='dash'>Dashboard</h1>
-     <p><i class="fas fa-user"></i> Welcome {user && user.name}</p>
-    
+     
+     <h1><i class="fas fa-user"></i> Welcome <strong>{user && user.name}</strong></h1>
+     {profile!==null ? <>  <Link to={`/profile/${_id}`} >
+         <span>View Profile</span> 
+        </Link></>:
+      <Fragment> <p className='small'>You have not yet set a profile, please add some info</p> 
+      <Link to='/create-profile' className='btn btn-primary'> Create profile </Link></Fragment> }
    
  
   </div>

@@ -40,15 +40,7 @@ function Landing1({ login, isAuthenticated, setAlert, register }) {
     }}
     // redirect if logged in 
     if (isAuthenticated){
-      return <Redirect to="/dashboard" />
-
-        if (password !== password2) {
-            setAlert("passwords do not match", "danger");
-        } else {
-            register({ name, email, password });
-        }
-    };
-
+      return <Redirect to="/dashboard" />}
     return (
         <div className="body">
             <title>How to Design Login &amp; Registration Form Transition</title>

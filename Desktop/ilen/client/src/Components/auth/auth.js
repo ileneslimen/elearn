@@ -43,11 +43,7 @@ function Landing1({ login, isAuthenticated, setAlert, register }) {
       return <Redirect to="/dashboard" />}
     return (
         <div className="body">
-            <title>How to Design Login &amp; Registration Form Transition</title>
-            <meta charset="UTF-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <link rel="stylesheet" type="text/css" href="style.css" />
-            <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet" />
+           
             <div className="cont">
                 <form className="form sign-in" onSubmit={(e) => onSubmit(e)}>
                     <h2>Sign In</h2>

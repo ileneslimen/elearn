@@ -36,7 +36,7 @@ import logo from "../../assets/wl 1.png";
                             <a href="/posts">Posts</a>
                         </li>
                         <li>
-                            <a onClick={logout} href="#!">
+                            <a onClick={logout} href="/login">
                                 Log Out{" "}
                             </a>
                         </li>
@@ -70,7 +70,7 @@ import logo from "../../assets/wl 1.png";
                         </li>
 
                         <li>
-                            <a onClick={logout} href="/">
+                            <a onClick={logout} href="/login">
                                 Log Out{" "}
                             </a>
                         </li>

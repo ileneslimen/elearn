@@ -29,18 +29,19 @@ const App = () => {
         <Provider className="App" store={store}>
             <Router>
                 <Fragment>
+                <Alert />
                     <Nav />
                     <Route exact path="/login" component={Landing1} />
 
                     <section className="Container">
-                        <Alert />
+                        
                         <Switch>
                             <PrivateRoute exact path="/dashboard" component={Dashboard} />
                             <PrivateRoute exact path="/posts" component={Posts} />
                             <PrivateRoute exact path="/profiles" component={Profiles} />
                             <PrivateRoute exact path="/profile/:id" component={Profile} />
                             <PrivateRoute exact path="/create-profile" component={CreateProfile} />
-                            <Route exact path="/edit-profile" component={EditProfile} />
+                            <PrivateRoute exact path="/edit-profile" component={EditProfile} />
                             <PrivateRoute exact path="/post/:id" component={Post} />
                             <PrivateRoute component={FileUpload} path="/upload" />
                             <PrivateRoute component={FilesList} path="/list" />

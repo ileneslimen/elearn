@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getCurrentProfile, deleteAccount } from "../../actions/profile";
+import { getCurrentProfile } from "../../actions/profile";
 import Spinner from "../layout/spinner";
 import { Fragment } from "react";
 
@@ -51,4 +51,4 @@ const mapStateToProps = (state) => ({
     auth: state.auth,
     profile: state.profile,
 });
-export default connect(mapStateToProps, { deleteAccount, getCurrentProfile })(Dashboard);
+export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);

@@ -21,10 +21,16 @@ const cors = require("cors");
 
 const fileRoute = require("./routes/file");
 
-const path = require("path");
+const path = require("path"); 
 
 app.use(cors());
 app.use(fileRoute);
-
+//production
+if (process.env.NODE_ENV==='production') {
+    app.use(express.static('client/build'))
+    app.get ('*',(req,res)=>{
+         res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+    })
+}
 const PORT = process.env.POPRT || 5000;
 app.listen(PORT, (err) => (err ? console.error(err) : console.log(`🚀 is 🏃 on port ${PORT} `)));
